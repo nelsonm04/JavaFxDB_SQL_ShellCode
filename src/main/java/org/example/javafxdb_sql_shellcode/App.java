@@ -1,6 +1,7 @@
 package org.example.javafxdb_sql_shellcode;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,10 +21,35 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
-        stage.setScene(scene);
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("splash.fxml"));
+        Parent splashRoot = loader.load();
+        Scene splashScene = new Scene(splashRoot);
+
+        stage.setScene(splashScene);
         stage.show();
+
+        // Delay and switch scenes after DB connects
+        new Thread(() -> {
+            ConnDbOps db = new ConnDbOps();
+            db.connectToDatabase();
+
+            try {
+                Thread.sleep(2000); // show splash for 2 seconds
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            Platform.runLater(() -> {
+                try {
+                    Parent mainRoot = loadFXML("login");
+                    stage.setScene(new Scene(mainRoot, 800, 600));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }).start();
     }
+
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
