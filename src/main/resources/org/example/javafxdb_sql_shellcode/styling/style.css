@@ -1,0 +1,74 @@
+/* Base layout */
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-color: #f4f4f4;
+}
+
+
+/* Labels */
+.label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #333333;
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 15px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #2980b9;
+}
+
+/* TextFields */
+.text-field,
+.password-field {
+    -fx-background-color: white;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 6px;
+    -fx-font-size: 14px;
+}
+
+/* TableView */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+}
+
+.table-view .column-header {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell:filled:selected {
+    -fx-background-color: #d6eaf8;
+}
+
+/* ImageView (Profile) */
+.profile_pic {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0.1, 0, 2);
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+}
+
+/* MenuBar */
+.menu-bar {
+    -fx-background-color: #2c3e50;
+}
+
+.menu-bar .label {
+    -fx-text-fill: white;
+}
+
+.menu-item {
+    -fx-font-size: 13px;
+}
